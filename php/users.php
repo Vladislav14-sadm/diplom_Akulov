@@ -17,7 +17,7 @@
 	
 </head>
 <body>
-	<?php include "../html/header.html"; ?>
+	<?php include "../html/header.php"; ?>
 	
 	<div class="container">
 		<div class="admin-table">
@@ -34,6 +34,14 @@
 			
 		
 	echo '<h3>Пользователи: </h3>
+	
+		<div class="searching">
+			<form method="post">
+				<input class="form-control" name="search" type="text" placeholder="Search..">
+				<br><button class="btn btn-outline-primary">Найти</button>
+				<a href="users.php" class="btn btn-outline-danger">Сбросить</a>
+			</form>		
+		</div>
 		
 		<table class="table table-hover">
 		  <thead>
@@ -50,8 +58,18 @@
 		  </thead>
 			<tbody>
 			<tr>';
+			
+			//поиск
+			$search = $_POST["search"];
+			
+			if (isset ($search)){
+				$select_empl = "SELECT id_employee, FIO, login, password, rights, department.name FROM employee INNER JOIN department ON employee.id_department = department.id_department 
+								where FIO LIKE '%$search%' OR login LIKE '$search%' OR department.name LIKE '$search%'";
+			}else{
+				$select_empl = "SELECT id_employee, FIO, login, password, rights, department.name FROM employee INNER JOIN department ON employee.id_department = department.id_department ORDER BY FIO";
+			}
 		
-			$select_empl = "SELECT id_employee, FIO, login, password, rights, department.name FROM employee INNER JOIN department ON employee.id_department = department.id_department";
+			//$select_empl = "SELECT id_employee, FIO, login, password, rights, department.name FROM employee INNER JOIN department ON employee.id_department = department.id_department";
 			$result_empl = queryMysql($select_empl);
 			$rows = $result_empl->num_rows;
 				 

@@ -16,7 +16,7 @@
 	
 </head>
 <body>
-	<?php include "../html/header.html"; 
+	<?php include "../html/header.php"; 
 		//подключение к БД
 		require_once "../connection/connection.php";
 	
@@ -71,9 +71,21 @@ echo '<div class="container">
 				<option>Помощник администратора</option>
 			  </select>
 			  
-			  <label for="exampleFormControlInput1" class="form-label">Отдел: </label>
-			  <input type="text" name="depart" class="form-control" value="'. $row_empl['name'] .'" placeholder="petr1602" required>
+			  <label for="exampleFormControlInput1" class="form-label">Отдел: (сейчас: '. $row_empl['name'] . ')</label>
+						  
+			  	<select name="department" class="form-select" aria-label="Default select example">' .
+			  
+			  $select_depart = "SELECT name FROM department";
+			  $result_depart= queryMysql($select_depart);
+			  $rows = $result_depart->num_rows;
+
+			  for ($i = 0 ; $i < $rows ; ++$i){
+				  
+				  $row = $result_depart->fetch_assoc();
+				 echo '<option>'.  $row['name'] . '</option>';
+				 } 
 				 
+				echo '</select>
 				</div>
 			  <div class="mb-3">
 			  <button type="submit" name="button" class="btn btn-primary mb-3">Изменить</button>
@@ -87,6 +99,7 @@ echo '<div class="container">
 			$login = trim($_POST['login']);
 			$passw = trim($_POST['passw']);
 			$right = $_POST['right'];
+			
 			
 			 if (empty($FIO) && empty($login) && empty($passw) && empty($right) && empty($emp)){
             
@@ -104,8 +117,8 @@ echo '<div class="container">
 				break;
 			}
 			
-			$depart = $_POST['depart'];
-			$select_depart = "select id_department from department where name = '$depart'";
+			$department = $_POST['department'];
+			$select_depart = "select id_department from department where name = '$department'";
 			$result_depart = queryMysql($select_depart);
 			$row = $result_depart->fetch_assoc();
 			$id_depart = $row['id_department'];
@@ -235,7 +248,7 @@ echo '<div class="container">
 				<option>Входящий</option>
 				<option>В работе</option>
 				<option>Выполнен</option>
-				<option>Откланен</option>
+				<option>Отклонен</option>
 			  </select>
 			</div>
 			

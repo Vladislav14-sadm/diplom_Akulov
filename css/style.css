@@ -8,12 +8,17 @@
 	margin: 0 0 0 4%;
 }
 
+html,
+body {
+  height: 100%;
+}
 
 .footer{
+	flex: 0 0 auto;
 	background:#0d6efd;
 	color:#a5b0d4;
 	font-size:12px;
-	margin: 30px auto 0 auto;
+	margin: 5% auto 0 auto;
 	padding: 1.5% 20%;
 }
 .footer img{
@@ -39,16 +44,18 @@
 }
 
 .container{
-	height:100%;
+	position: relative;
+    min-height: 100%;
 }
 
 .admin-table{
-	padding: 10% 0 13% 0;
+	padding: 5% 0 0 0;
+	height:100%;
 }
 
 
 .admin-table h3{
-	margin: 0 0 5% 0;
+	margin: 0 0 1% 0;
 }
 
 .new_user{
@@ -66,10 +73,40 @@
 .new_department{
 	margin: 7% 0 32% 0;
 }
-
+/*кнопки удалить и изменить*/
 .botton img{
 	width: 25px;
 }
+
+/*кнопка избранное*/
+.animate2{
+  position:relative;
+  margin:0 auto;/* устанваливаем блок div по центру страницы*/
+  width:25px; /* Ширина */
+  height: 25px;  /* Высота */                
+}
+
+.animate2 img {
+  position:absolute; /* абсолютное позиционирование*/
+  left: 0; /* выравниваем картинки по левому верхнему углу div-а*/
+  top: 0; /* выравниваем картинки по левому верхнему углу div-а */  
+}
+.animate2 img.first { /* первая картинка полностью прозрачная */
+  opacity:0;
+  filter:alpha (opacity=0);
+}
+
+.animate2:hover img.first { /* при наведении курсора первая картинка становится не прозрачной */
+  opacity:1;
+  filter:alpha (opacity=100);
+}
+
+.animate2:hover img.second, .animate2 img.second:hover { /* а вторая при наведении курсора становится прозрачной */
+  opacity:0;
+  filter:alpha (opacity=0);
+}
+/*конец кнопки избранное*/
+
 .table{
 	/*table-layout: fixed;*/
     width:100%
@@ -79,6 +116,10 @@
 	width:35%;
 }
 
+.searching{
+	text-align:right;
+	margin: 1% 0 2% 65%;
+}
 
 /*Для входа*/
 

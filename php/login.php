@@ -24,16 +24,16 @@ require_once "../connection/connection.php";
 		$depart = $row['name'];
 		
 		
-		setcookie("login", $login, time()+3600, '/', 'localhost', false);
-		setcookie("password", $password, time()+3600, '/', 'localhost', false);
-		setcookie("FIO", $FIO, time()+3600);
-		setcookie("depart", $depart, time()+3600);
-		setcookie("rights", $rights, time()+3600);
+		setcookie("login", $login, time()+9600, '/', 'localhost', false);
+		setcookie("password", $password, time()+9600, '/', 'localhost', false);
+		setcookie("FIO", $FIO, time()+9600);
+		setcookie("depart", $depart, time()+9600);
+		setcookie("rights", $rights, time()+9600);
 		
 		if ($rights > 1){
 		header('Location:../php/admin-panel.php');
 		}else{
-		header('Location:../php/application.php');}
+		header('Location:../php/applic.php');}
 		//cooki
 		
 	

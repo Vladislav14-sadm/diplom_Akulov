@@ -16,7 +16,7 @@
 	
 </head>
 <body>
-	<?php include "../html/header.html"; 
+	<?php include "../html/header.php"; 
 		//подключение к БД
 		require_once "../connection/connection.php";?>
 	

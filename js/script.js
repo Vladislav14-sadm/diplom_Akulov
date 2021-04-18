@@ -10,8 +10,11 @@ $('body').on('click', '.password-control', function(){
 	return false;
 }); 
 
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').focus()
+});
+
 /*переход в форме вход/регистрация
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });*/
-

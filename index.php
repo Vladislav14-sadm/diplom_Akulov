@@ -15,7 +15,7 @@ header('Location: php/application.php');
 </head>
 <body>
 
-	<div class="container-xl">
+	<div class="container-sm">
 		<div class="login-page">
 			  <div class="form">
 				<!--<form method="post" class="register-form" action="connection/registration.php">

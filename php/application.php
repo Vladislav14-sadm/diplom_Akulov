@@ -2,7 +2,6 @@
 	if (!isset($_COOKIE['login'])) {
 	header('Location: ../index.php');}
 ?>
-
 <!DOCTYPE html>
 <html lang='ru'>
 
@@ -39,6 +38,7 @@
 		
 		<h3>Здравствуйте, <?php echo $FIO ?> </h3>
 		<h3>Отделение :  <?php echo $depart ?></h3>
+		<a href="applic.php" class="btn btn-outline-primary">Моя заявки</a>
 		
 		<div class="mb-3">
 		
@@ -89,7 +89,8 @@
 
 			  <label for="exampleFormControlTextarea1" class="form-label">Комментарий (максимально 500 символов)</label>
 			  <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Напишите в каком кабинете и вкратце опишите ситуацию"></textarea>
-			  <button type="submit" name="button" class="btn btn-primary mb-3">Отправить</button>
+			 <button type="submit" name="button" class="btn btn-primary mb-3">Отправить</button>
+			 
 			</form>
 			
 			<?php 
@@ -129,7 +130,7 @@
 			$query_empl_applic="Insert into empl_applic (id_employee, id_applications) Values ( $id_employee, $id_applications)"; 
 			$result_empl_applic = queryMysql($query_empl_applic);
 			
-			
+			//header('Location: applic.php');
 			?>
 			<script>alert( "Ваша заявка была успешно отправлена. Можете закрывать эту страницу!" );</script>
 			
